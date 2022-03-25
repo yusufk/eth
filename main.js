@@ -1,7 +1,7 @@
 const connectButton = document.getElementById('connectMetaMaskButton');
 const buyButton = document.getElementById('buyButton');
 const showAccount = document.getElementById('metaAccount');
-const accountText = document.getElementById('account');
+const account = document.getElementById('account');
 const redirectButton = document.getElementById('redirectButton');
 const mobile = document.getElementById('mobile');
 const desktop = document.getElementById('desktop');
@@ -43,7 +43,7 @@ async function getAccount() {
     accounts = await provider.send("eth_requestAccounts", []);
     showAccount.innerHTML = accounts[0];
     buyButton.disabled = false;
-    accountText.disabled = false;
+    account.style.display = 'block';
     // The MetaMask plugin also allows signing transactions to
     // send ether and pay to change state within the blockchain.
     // For this, you need the account signer...
