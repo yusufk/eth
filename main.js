@@ -2,21 +2,32 @@ const connectButton = document.getElementById('connectMetaMaskButton');
 const buyButton = document.getElementById('buyButton');
 const showAccount = document.getElementById('metaAccount');
 const accountText = document.getElementById('account');
+const redirectButton = document.getElementById('redirectButton');
 var signer;
 var accounts;
 
 //Detect if the device is a mobile device
-function isMobile() {
+/*function isMobile() {
     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 };
+*/
+const isMobile = navigator.userAgentData.mobile; //resolves true/false
+
+if (isMobile) {
+    connectButton.style.display = 'none';
+    buyButton.style.display = 'none';
+    showAccount.style.display = 'none';
+    redirectButton.style.display = 'block';
+} else {
+    redirectButton.style.display = 'none';
+}
+
+redirectButton.addEventListener('click', function() {
+    window.location.href = 'https://metamask.app.link/send/0xd5838aD056eaD570111b99D465563854cd00e54A?value=1e15';
+});
 
 connectButton.addEventListener('click', () => {
-    if (isMobile()) {
-        //redirect the page
-        window.location.href = "https://metamask.app.link/send/0xd5838aD056eaD570111b99D465563854cd00e54A?value=1e15";
-    } else {
     getAccount();
-    }
 });
 
 buyButton.addEventListener('click', () => {
