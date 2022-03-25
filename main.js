@@ -3,6 +3,8 @@ const buyButton = document.getElementById('buyButton');
 const showAccount = document.getElementById('metaAccount');
 const accountText = document.getElementById('account');
 const redirectButton = document.getElementById('redirectButton');
+const mobile = document.getElementById('mobile');
+const desktop = document.getElementById('desktop');
 var signer;
 var accounts;
 
@@ -14,12 +16,11 @@ var accounts;
 const isMobile = navigator.userAgentData.mobile; //resolves true/false
 
 if (isMobile) {
-    connectButton.style.display = 'none';
-    buyButton.style.display = 'none';
-    showAccount.style.display = 'none';
-    redirectButton.style.display = 'block';
+    desktop.style.display = 'none';
+    mobile.style.display = 'block';
 } else {
-    redirectButton.style.display = 'none';
+    desktop.style.display = 'block';
+    mobile.style.display = 'none';
 }
 
 redirectButton.addEventListener('click', function() {
