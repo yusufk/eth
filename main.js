@@ -14,7 +14,6 @@ var accounts;
 };
 */
 const isMobile = navigator.userAgentData.mobile; //resolves true/false
-alert(isMobile);
 if (isMobile) {
     desktop.style.display = 'none';
     mobile.style.display = 'block';
@@ -24,7 +23,7 @@ if (isMobile) {
 }
 
 redirectButton.addEventListener('click', function() {
-    window.location.href = 'https://metamask.app.link/send/0xd5838aD056eaD570111b99D465563854cd00e54A?value=1e15';
+    window.location.href = 'https://metamask.app.link/send/pay-0xd5838aD056eaD570111b99D465563854cd00e54A@1?value=1e15';
 });
 
 connectButton.addEventListener('click', () => {
