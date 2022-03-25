@@ -5,8 +5,18 @@ const accountText = document.getElementById('account');
 var signer;
 var accounts;
 
+//Detect if the device is a mobile device
+function isMobile() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+};
+
 connectButton.addEventListener('click', () => {
+    if (isMobile()) {
+        //redirect the page
+        window.location.href = "https://metamask.app.link/send/0xd5838aD056eaD570111b99D465563854cd00e54A?value=1e15";
+    } else {
     getAccount();
+    }
 });
 
 buyButton.addEventListener('click', () => {
