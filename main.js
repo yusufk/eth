@@ -1,8 +1,15 @@
-const ethereumButton = document.querySelector('.enableEthereumButton');
-const showAccount = document.querySelector('.showAccount');
+const connectButton = document.getElementById('connectMetaMaskButton');
+const buyButton = document.getElementById('buyButton');
+const showAccount = document.getElementById('metaAccount');
+var signer;
+var accounts;
 
-ethereumButton.addEventListener('click', () => {
+connectButton.addEventListener('click', () => {
     getAccount();
+});
+
+buyButton.addEventListener('click', () => {
+    sendETH();
 });
 
 // A Web3Provider wraps a standard Web3 provider, which is
@@ -10,28 +17,35 @@ ethereumButton.addEventListener('click', () => {
 const provider = new ethers.providers.Web3Provider(window.ethereum)
 
 async function getAccount() {
-    const accounts = await provider.send("eth_requestAccounts", []);
-    const defaultAccount = accounts[0];
-    showAccount.innerHTML = defaultAccount;
+    accounts = await provider.send("eth_requestAccounts", []);
     // The MetaMask plugin also allows signing transactions to
     // send ether and pay to change state within the blockchain.
     // For this, you need the account signer...
-    const signer = provider.getSigner()
-    // Creating a transaction param
+    console.log("Accounts: " + accounts);
+    signer = provider.getSigner()
+    showAccount.innerHTML = accounts[0];
+    buyButton.disabled = false;
+}
+
+// Send ETH using a transaction
+async function sendETH() {
     const tx = {
-        from: defaultAccount,
+        from: accounts[0],
         to: "0xd5838aD056eaD570111b99D465563854cd00e54A",
-        value: ethers.utils.parseEther("0.0025"),
-        nonce: await provider.getTransactionCount(defaultAccount, "latest"),
+        value: ethers.utils.parseEther("0.001"),
+        nonce: await provider.getTransactionCount(accounts[0], "latest"),
         gasPrice: ethers.utils.hexlify(parseInt(await provider.getGasPrice())),
         gasLimit: ethers.utils.hexlify(10000),
     };
-
-    signer.sendTransaction(tx).then((transaction) => {
+    signer.sendTransaction(tx)
+    .then((transaction) => {
         console.dir(transaction);
-        alert("Send finished!");
+        alert("Thanks!");
+    })
+    .catch((error) => {
+        console.log(error);
+        alert("Awww, that didn'work!");
     });
-}
-
+};
 
 

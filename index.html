@@ -1,13 +1,31 @@
+<!doctype html>
+<html class="no-js" lang="en">
 
-<!DOCTYPE html>
-<html>
 <head>
+   <meta charset="utf-8" />
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Foundation Starter Template</title>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/what-input/5.2.10/what-input.min.js"
+      integrity="sha512-4snZhaL41OLVJbrysFHLFItNF9pb4zzm/X6ag4srEFALI0Hns+FVZg22G/nofqTGliAyaeWxoTjTZpmbU3enXQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <!-- Compressed CSS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css"
+      crossorigin="anonymous">
+         <!-- Compressed JavaScript -->
+   <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js"
+   crossorigin="anonymous"></script>
 </head>
+
 <body>
-   <button class="enableEthereumButton">Connect to MetaMask and buy me a coffee</button>
-   <h2>Account: <span class="showAccount"></span></h2>
+   <script>
+      $(document).foundation();
+   </script>
+   <button class="submit success button" id="connectMetaMaskButton">Connect to your MetaMask Wallet</button>
+   <button class="submit success button" id="buyButton" disabled>Buy me a coffee</button>
+   <h2>Account: <span id="metaAccount"></span></h2>
    <script src="main.js"></script>
 </body>
 </html>
