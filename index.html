@@ -23,9 +23,22 @@
    <script>
       $(document).foundation();
    </script>
-   <button class="submit success button" id="connectMetaMaskButton">Connect to your MetaMask Wallet</button>
-   <button class="submit success button" id="buyButton" disabled>Buy me a coffee</button>
-   <h2>Account: <span id="metaAccount"></span></h2>
+   <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell large-4">
+          <div class="card">
+            <img src="">
+            <div class="card-section">
+            <h1>Buy me a coffee</h1>
+              <p>Use your eth to buy me a coffee.</p>
+              <button class="submit success button" id="connectMetaMaskButton">Connect to your MetaMask Wallet</button>
+              <div id="account" hidden>From account: <span id="metaAccount"></span></div>
+              <button class="submit success button" id="buyButton" disabled>Buy me a coffee</button>
+            </div>
+          </div>
+        </div>
+      </div>
+   </div>
    <script src="main.js"></script>
 </body>
 </html>

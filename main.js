@@ -1,6 +1,7 @@
 const connectButton = document.getElementById('connectMetaMaskButton');
 const buyButton = document.getElementById('buyButton');
 const showAccount = document.getElementById('metaAccount');
+const accountText = document.getElementById('account');
 var signer;
 var accounts;
 
@@ -14,17 +15,17 @@ buyButton.addEventListener('click', () => {
 
 // A Web3Provider wraps a standard Web3 provider, which is
 // what MetaMask injects as window.ethereum into each page
-const provider = new ethers.providers.Web3Provider(window.ethereum)
+const provider = new ethers.providers.Web3Provider(window.ethereum,"any")
 
 async function getAccount() {
     accounts = await provider.send("eth_requestAccounts", []);
+    showAccount.innerHTML = accounts[0];
+    buyButton.disabled = false;
+    accountText.disabled = false;
     // The MetaMask plugin also allows signing transactions to
     // send ether and pay to change state within the blockchain.
     // For this, you need the account signer...
-    console.log("Accounts: " + accounts);
     signer = provider.getSigner()
-    showAccount.innerHTML = accounts[0];
-    buyButton.disabled = false;
 }
 
 // Send ETH using a transaction
