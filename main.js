@@ -14,7 +14,7 @@ var accounts;
 };
 */
 const isMobile = navigator.userAgentData.mobile; //resolves true/false
-
+alert(isMobile);
 if (isMobile) {
     desktop.style.display = 'none';
     mobile.style.display = 'block';
